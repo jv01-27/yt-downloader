@@ -6,8 +6,20 @@ from pytube import YouTube
 def video_downloader(video_url):
     # passing the url to the YouTube object
     my_video = YouTube(video_url)
+
+    #--------------------------------------
+    # VIDEO RESOLUTIONS, CHOOSE ONE OF THIS
     # downloading the video in high resolution
-    my_video.streams.get_highest_resolution().download()
+    # my_video.streams.get_highest_resolution().download()
+
+    # if you want to download a video of the lowest resolution
+    # my_video.streams.first().download()
+
+    # if you want to specify the video resolution
+    # examples: 144p, 240p, 360p, 480p, 720p
+    YouTube(url).streams.filter(res="720p").first().download()
+    #--------------------------------------
+
     # return the video title
     return my_video.title
 
